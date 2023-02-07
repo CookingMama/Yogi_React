@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stock"> 
+
+	<select id="viewTop10" resultType="StockDTO" >
+	<![CDATA[
+		select id, stockItemName,  openPrice,  closePrice
+		from stockAllPrices
+		 order by TransactionAmount desc
+		limit 10  
+		;
+	]]>
+	</select>
+	<select id="findOne" resultType="StockDTO" parameterType="StockDTO">
+		<![CDATA[
+			select id, itemCode, stockItemName,marketSegmentation,presence,  closePrice, prepare,fluctuationRate, openPrice,
+			highPrice,lowPrice,tradingVolume
+			from stockAllPrices
+			where id = #{id};
+			
+		]]>
+	</select>
+	
+	
+	<!--	<insert id="insert" parameterType="BoardDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into board(title, content, userName)
+			values(#{title}, #{content}, #{userName});
+		]]>
+	</insert>
+	<delete id="deleteById" parameterType="Integer">
+		<![CDATA[
+			delete from board where id = #{id};
+		]]>
+	</delete>
+	<update id = "updateById" parameterType = "BoardDTO">
+		<![CDATA[
+			update board set
+			title = #{title}, userName = #{userName}, content = #{content}
+			where id = #{id};
+		]]>
+	 
+	</update>-->
+</mapper>

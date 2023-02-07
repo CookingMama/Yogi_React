@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="login" parameterType = "MemberDTO" resultType= "MemberDTO">
+		<![CDATA[
+			select id, memberId, memberPW, memberName, memberBirth from member
+			where memberId = #{memberId} and memberPW = #{memberPW}
+			limit 0,1
+
+		]]>
+	</select>
+	<insert id="signin" parameterType="MemberDTO" useGeneratedKeys="true" keyProperty="id">
+		<![CDATA[
+			insert into member( memberId, memberPW, memberName, memberBirth )
+			values(#{memberId}, #{memberPW}, #{memberName}, #{memberBirth});
+		]]>
+	</insert>
+	<select id="findOne" resultType="MemberDTO" parameterType="MemberDTO">
+		<![CDATA[
+			select id, memberId, memberPW, memberName, MemberBirth
+			from member
+			where id = #{id};
+			
+		]]>
+	</select>
+	<update id = "updateMemberInfoById" parameterType = "MemberDTO">
+		<![CDATA[
+			update member set
+			memberPW = #{memberPW}, memberName = #{memberName}, memberBirth = #{memberBirth}
+			where id = #{id};
+		]]>
+	
+	</update>
+	
+</mapper>
