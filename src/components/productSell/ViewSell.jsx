@@ -31,13 +31,6 @@ const products = [
 ];
 
 const ViewSell = () => {
-  const [product, setProduct] = useState([]);
-  useEffect(() => {
-    const { data } = useSelector((state) => state.productSell);
-    setProduct(data);
-  }, []);
-
-  console.log(product);
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
