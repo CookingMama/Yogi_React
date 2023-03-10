@@ -1,34 +1,37 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { api, apiFile } from "../../api/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { apiFileComment } from "../../api/api";
 
-const PostSell = () => {
-  const [sell, setSell] = useState({
+const PostAuctionComment = () => {
+  const [auctionComment, setAuctionComment] = useState({
     title: "",
-    category: null,
-    price: 0,
+    content: "",
     pCondition: null,
+    biddingPrice: 0,
     file: null,
     nameFile: "",
-    content: "",
   });
-
+  const param = useParams();
   const navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault();
     const response = //
-      await apiFile("post", "/productsell/post", sell); //
+      await apiFileComment(
+        "post",
+        `/auction/${param.id}/comment`,
+        auctionComment
+      ); //
     // .catch((e) => {
     //   alert(e.response.data);
     // });
     if (response?.status === 201) {
-      navigate("/productsell");
+      navigate(`/auctionbuy/${param.id}`);
     }
   };
 
   const setFileName = (e) => {
-    setSell({
-      ...sell,
+    setAuctionComment({
+      ...auctionComment,
       nameFile: e.target.files[0].name,
       file: e.target.files[0],
     });
@@ -37,7 +40,7 @@ const PostSell = () => {
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     console.log(e.target.value);
-    setSell({ ...sell, [name]: value });
+    setAuctionComment({ ...auctionComment, [name]: value });
   };
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -58,32 +61,13 @@ const PostSell = () => {
                 onChange={onChangeHandler}
               />
             </div>
-            <div className="p-1">
-              <h1 className="p-1">카테고리</h1>
-              <select
-                id="category"
-                name="category"
-                className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
-                border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 
-                focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                onChange={onChangeHandler}
-              >
-                <option>-- 눌러서 선택해주세요! --</option>
-                <option value={"ELECTRONICS"}>전자기기</option>
-                <option value={"CAMERA"}>카메라</option>
-                <option value={"GAME"}>게임</option>
-                <option value={"CLOTH"}>의류</option>
-                <option value={"SHOES"}>신발</option>
-                <option value={"ETC"}>그 외</option>
-              </select>
-            </div>
             <div className="p-1 relative">
               <h1 className="p-1">가격</h1>
               <div className="relative">
                 <input
                   type="number"
-                  id="price"
-                  name="price"
+                  id="biddingPrice"
+                  name="biddingPrice"
                   className="py-2 px-3 pl-9 pr-16 block w-full border border-gray-300 rounded-md text-sm focus:z-10 
                   focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="1,000"
@@ -162,4 +146,4 @@ const PostSell = () => {
   );
 };
 
-export default PostSell;
+export default PostAuctionComment;

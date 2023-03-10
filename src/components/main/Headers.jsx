@@ -184,7 +184,10 @@ export default function Headers() {
           >
             중고거래
           </Link>
-          <Link to="/" className="text-xl font-semibold leading-6 text-red-400">
+          <Link
+            to="/auctionBuy"
+            className="text-xl font-semibold leading-6 text-red-400"
+          >
             역경매
           </Link>
         </Popover.Group>
