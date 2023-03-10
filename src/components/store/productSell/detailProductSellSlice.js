@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../../api/api";
 
 const initialState = {
@@ -15,6 +16,13 @@ export const getDetailProduct = createAsyncThunk(
   }
 );
 
+export const putDetailProduct = createAsyncThunk(
+  "/productsellput",
+  async (id) => {
+    const response = await api("put", `/productsell/${id}`);
+  }
+);
+
 const detailProductSellSlice = createSlice({
   name: "detailProductSell",
   initialState,
@@ -27,9 +35,19 @@ const detailProductSellSlice = createSlice({
       .addCase(getDetailProduct.fulfilled, (state, action) => {
         state.status = "successed";
         state.data = action.payload;
-        console.log(action.payload);
       })
       .addCase(getDetailProduct.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.status = "failed";
+      })
+      .addCase(putDetailProduct.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(putDetailProduct.fulfilled, (state, action) => {
+        state.status = "successed";
+        console.log(action.payload);
+      })
+      .addCase(putDetailProduct.rejected, (state, action) => {
         state.error = action.error.message;
         state.status = "failed";
       });
