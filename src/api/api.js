@@ -41,3 +41,28 @@ export const apiFile = async (method, url, data) => {
   });
   return response;
 };
+
+export const apiFileComment = async (method, url, data) => {
+  const formData = new FormData();
+  console.log(data.file);
+  formData.append("title", data.title);
+  formData.append("biddingPrice", data.biddingPrice);
+  formData.append("pCondition", data.pCondition);
+  formData.append("file", data.file);
+  formData.append("content", data.content);
+  formData.append("nameFile", data.nameFile);
+  const token = localStorage.getItem("token");
+  const headers = token
+    ? {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      }
+    : {};
+  const response = await axios({
+    method,
+    data: formData,
+    url,
+    headers,
+  });
+  return response;
+};
