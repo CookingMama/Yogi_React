@@ -27,24 +27,82 @@ export default function SignUp() {
     phoneNumber: "",
     email: "",
   });
-
+  let regex = new RegExp ('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+  const checkSignUp =async()=>{
+    if (user.userPw.length < 8) {
+      alert("비밀번호는 8자 이상이어야 합니다.");
+      return;
+    }
+    else if (user.birth.length <6) {
+      alert("생년월일은 6자 이상이어야 합니다.");
+      return;
+    }
+    else if (user.birth.length === 6) {
+      let month = Number(user.birth.substring(2, 4));
+      let day = Number(user.birth.substring(4, 6));
+      if (month < 1 || month > 12) {
+        alert("생년월일은 1~12월이어야 합니다.");
+        return;
+      }
+      else if (day < 1 || day > 31) {
+        alert("생년월일은 1~31일이어야 합니다.");
+        return;
+      }
+    }
+    if (user.phoneNumber.length < 11) {
+      alert("잘못된 핸드폰 번호 입력");
+      return;
+    }
+    if (!(regex.test(user.email))) {
+      alert("잘못된 이메일 형식입니다.");
+      return;
+    }
+    return true;
+  }
+  
   const navigate = useNavigate();
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
-    const response = //
-      await api("post", "/user/signup", user); //
-    // .catch((e) => {
-    //   alert(e.response.data);
-    // });
+    const check = await checkSignUp();
+    if(check) {
+      const response = //
+      await api("post", "/user/signup", user) //
+    .catch((e) => {
+      alert("이미 사용중안 아이디입니다.")
+    });
     console.log(response);
     if (response?.status === 201) {
       navigate("/login")
-    };
+    }
+    }
   };
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
+    if (name === "birth") {
+        if (/^\d{6}$/.test(value)) {
+          setUser({...user, [name]: value });
+        }
+        else if (value.length > 6 ) {
+          alert("유효하지않은 생년월일값입니다.")
+          value = value.slice(0, 6);
+        }
+          
+    }
+    else if (name == "phoneNumber") {
+      if (/^\d{11}$/.test(value)) {
+        setUser({...user, [name]: value });
+      }
+      else if (value.length > 11 ) {
+        alert("유효하지않은 전화번호값입니다.")
+        value = value.slice(0, 1)
+      }
+    
+    }
+    
+    
+
     setUser({ ...user, [name]: value });
   };
 
@@ -102,8 +160,10 @@ export default function SignUp() {
                   id="birth"
                   name="birth"
                   type="number"
+                  value= {user.birth}
                   autoComplete="current-password"
                   required
+                  pattern="[0-9]{6}"
                   className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="생년월일을 입력해주세요. 예)230101"
                   onChange={onChangeHandler}
@@ -114,6 +174,7 @@ export default function SignUp() {
                   id="phoneNumber"
                   name="phoneNumber"
                   type="number"
+                  value= {user.phoneNumber}
                   autoComplete="current-password"
                   required
                   className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
