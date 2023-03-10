@@ -64,6 +64,11 @@ const ViewSell = () => {
                   {product.price}
                 </p>
               </div>
+              {/* 판매완료 시 구매불가 
+              {product.}
+              <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+                <span className="text-gray-500">판매완료</span>
+              </div> */}
             </div>
           ))}
         </div>

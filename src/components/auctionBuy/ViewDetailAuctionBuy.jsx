@@ -106,6 +106,7 @@ const ViewDetailAuctionBuy = () => {
           </button>
         </Link>
       </div>
+      {/* <뭔가 가져옴/> */}
     </div>
   );
 };

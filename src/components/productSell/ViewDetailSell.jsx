@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
-import { getDetailProduct } from "../store/productSell/detailProductSellSlice";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  getDetailProduct,
+  putDetailProduct,
+} from "../store/productSell/detailProductSellSlice";
 import { getProduct } from "../store/productSell/productSellSlice";
 
 const ViewDetailSell = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.detailProduct);
   //   const location = useLocation();
@@ -13,7 +17,10 @@ const ViewDetailSell = () => {
   useEffect(() => {
     dispatch(getDetailProduct(param.id));
   }, []);
-
+  const buyProductSell = () => {
+    dispatch(putDetailProduct(param.id));
+    navigate("/productsell");
+  };
   return (
     <div className="bg-white whitespace-nowrap">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl">
@@ -42,6 +49,16 @@ const ViewDetailSell = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-end mr-5">
+        <button
+          className="group relative flex w-1/5 justify-center rounded-md border border-transparent 
+              bg-slate-900 py-2 px-4 text-sm font-semibold text-red-400 hover:bg-indigo-700 focus:outline-none 
+                focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-10"
+          onClick={buyProductSell}
+        >
+          구매하기
+        </button>
       </div>
     </div>
   );
