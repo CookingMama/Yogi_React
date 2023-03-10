@@ -24,7 +24,7 @@ const PostSell = () => {
     // });
     console.log(response);
     if (response?.status === 201) {
-      navigate("/");
+      navigate("/productsell");
     }
   };
 
@@ -70,6 +70,7 @@ const PostSell = () => {
                 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 onChange={onChangeHandler}
               >
+                <option>-- 눌러서 선택해주세요! --</option>
                 <option value={"ELECTRONICS"}>전자기기</option>
                 <option value={"CAMERA"}>카메라</option>
                 <option value={"GAME"}>게임</option>
@@ -108,6 +109,7 @@ const PostSell = () => {
                 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                 onChange={onChangeHandler}
               >
+                <option>-- 눌러서 선택해주세요! --</option>
                 <option>S</option>
                 <option>A</option>
                 <option>B</option>
