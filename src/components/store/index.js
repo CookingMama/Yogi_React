@@ -3,6 +3,7 @@ import auctionBuySlice from "./auctionBuy/auctionBuySlice";
 import detailAuctionBuySlice from "./auctionBuy/detailAuctionBuySlice";
 import auctionCommentSlice from "./auctionComment/auctionCommentSlice";
 import detailAuctionCommentSlice from "./auctionComment/detailAuctionCommentSlice";
+import myProductSellSlice from "./myPage/myProductSellSlice";
 import detailProductSellSlice from "./productSell/detailProductSellSlice";
 import productSellSlice from "./productSell/productSellSlice";
 import userSlice from "./user/userSlice";
@@ -16,5 +17,6 @@ export default configureStore({
     detailAuctionBuy: detailAuctionBuySlice,
     auctionComment: auctionCommentSlice,
     detailAuctionComment: detailAuctionCommentSlice,
+    myProductSell: myProductSellSlice,
   },
 });

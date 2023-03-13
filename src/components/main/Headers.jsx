@@ -194,7 +194,7 @@ export default function Headers() {
         {data.nickName ? (
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-8 ">
             <Link
-              to="/"
+              to="/mypage"
               className="text-xl font-semibold leading-6 text-red-400"
             >
               마이페이지
