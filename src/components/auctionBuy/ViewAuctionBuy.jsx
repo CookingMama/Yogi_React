@@ -28,6 +28,7 @@ const ViewAuctionBuy = () => {
             >
               <div className="mt-2 flex justify-between m-2">
                 <div>
+                  {console.log(Auction)}
                   <h3 className="text-sm text-gray-700">
                     <Link to={`/auctionbuy/${Auction.id}`}>
                       <span aria-hidden="true" className="absolute inset-0" />
