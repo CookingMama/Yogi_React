@@ -27,7 +27,6 @@ const detailAuctionBuySlice = createSlice({
       .addCase(getDetailAuctionBuy.fulfilled, (state, action) => {
         state.status = "successed";
         state.data = action.payload;
-        console.log(action.payload);
       })
       .addCase(getDetailAuctionBuy.rejected, (state, action) => {
         state.error = action.error.message;
