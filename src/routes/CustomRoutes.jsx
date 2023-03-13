@@ -3,6 +3,8 @@ import AuctionBuy from "../components/auctionBuy";
 import PostAuctionBuy from "../components/auctionBuy/PostAuctionBuy";
 import ViewDetailAuctionBuy from "../components/auctionBuy/ViewDetailAuctionBuy";
 import PostAuctionComment from "../components/auctionComment/PostAuctionComment";
+import ViewAuctionCommentDetail from "../components/auctionComment/ViewAuctionCommentDetail";
+import ViewAuctionCommentList from "../components/auctionComment/ViewAuctionCommentList";
 import Home from "../components/home";
 import Main from "../components/main";
 import Productsell from "../components/productSell";
@@ -29,6 +31,10 @@ const CustomRoutes = () => {
           <Route path="auctionbuy/post" element={<PostAuctionBuy />} />
 
           <Route path="auctionbuy/:id/post" element={<PostAuctionComment />} />
+          <Route
+            path="auctionbuy/:auctionId/:commentId"
+            element={<ViewAuctionCommentDetail />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

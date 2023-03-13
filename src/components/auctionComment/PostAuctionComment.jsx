@@ -11,6 +11,7 @@ const PostAuctionComment = () => {
     file: null,
     nameFile: "",
   });
+
   const param = useParams();
   const navigate = useNavigate();
   const onSubmit = async (e) => {

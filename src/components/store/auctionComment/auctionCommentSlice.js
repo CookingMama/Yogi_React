@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { useParams } from "react-router-dom";
 import { api } from "../../../api/api";
 const initialState = {
   data: [],
@@ -6,25 +7,28 @@ const initialState = {
   error: null,
 };
 
-export const getAuctionComment = createAsyncThunk("/auctionComment", async () => {
-  const response = await api("get", "/auction"); //만들다말음
-  return response.data;
-});
+export const getAuctionComment = createAsyncThunk(
+  "/auctionBuy/comment",
+  async (id) => {
+    const response = await api("get", `/auction/${id}/comment`);
+    return response.data;
+  }
+);
 
 const auctionCommentSlice = createSlice({
-  name: "auctionBuy",
+  name: "auctionComment",
   initialState,
   reducers: {},
   extraReducers(bulider) {
     bulider
-      .addCase(getAuction.pending, (state, action) => {
+      .addCase(getAuctionComment.pending, (state, action) => {
         state.status = "loading";
       })
-      .addCase(getAuction.fulfilled, (state, action) => {
+      .addCase(getAuctionComment.fulfilled, (state, action) => {
         state.status = "successed";
         state.data = action.payload;
       })
-      .addCase(getAuction.rejected, (state, action) => {
+      .addCase(getAuctionComment.rejected, (state, action) => {
         state.error = action.error.message;
         state.status = "failed";
       });

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useParams } from "react-router-dom";
+import ViewAuctionCommentList from "../auctionComment/ViewAuctionCommentList";
 import { getDetailAuctionBuy } from "../store/auctionBuy/detailAuctionBuySlice";
 import { getDetailProduct } from "../store/productSell/detailProductSellSlice";
 import { getProduct } from "../store/productSell/productSellSlice";
@@ -10,7 +11,6 @@ const ViewDetailAuctionBuy = () => {
   const { data } = useSelector((state) => state.detailAuctionBuy); //만들어야함
   //   const location = useLocation();
   const param = useParams();
-  console.log(param);
   useEffect(() => {
     dispatch(getDetailAuctionBuy(param.id));
   }, []);
@@ -106,7 +106,7 @@ const ViewDetailAuctionBuy = () => {
           </button>
         </Link>
       </div>
-      {/* <뭔가 가져옴/> */}
+      <ViewAuctionCommentList />
     </div>
   );
 };
