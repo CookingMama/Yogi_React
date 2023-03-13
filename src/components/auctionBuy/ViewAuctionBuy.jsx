@@ -43,16 +43,12 @@ const ViewAuctionBuy = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-white">-</p>{" "}
-                  {/* 꼼수 : 글씨를 하얗게 해서 한줄띄움 */}
-                  <p className="text-base font-semibold text-gray-900">
+                  <p className="text-base font-semibold text-gray-900 mt-5">
                     {Auction.title}
                   </p>
                 </div>
                 <div>
-                  <p className="text-white">-</p>{" "}
-                  {/* 꼼수 : 글씨를 하얗게 해서 한줄띄움 */}
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="text-sm font-medium text-gray-900 mt-4">
                     {Auction.highWishPrice}원
                   </p>
                   <p className="text-sm font-medium text-gray-900">
