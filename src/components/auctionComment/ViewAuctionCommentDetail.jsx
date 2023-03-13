@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { getDetailAuctionComment } from "../store/auctionComment/detailAuctionCommentSlice";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  getDetailAuctionComment,
+  putDetailComment,
+} from "../store/auctionComment/detailAuctionCommentSlice";
 
 const ViewAuctionCommentDetail = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.detailAuctionComment); //만들어야함
   const { auctionId, commentId } = useParams();
@@ -11,6 +15,12 @@ const ViewAuctionCommentDetail = () => {
   useEffect(() => {
     dispatch(getDetailAuctionComment({ auctionId, commentId }));
   }, []);
+
+  const buyAuctionComment = () => {
+    dispatch(putDetailComment({ auctionId, commentId }));
+    navigate("/auctionbuy");
+  };
+
   return (
     <div className="bg-white whitespace-nowrap">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl">
@@ -58,7 +68,7 @@ const ViewAuctionCommentDetail = () => {
           className="group relative flex w-1/5 justify-center rounded-md border border-transparent 
               bg-slate-900 py-2 px-4 text-sm font-semibold text-red-400 hover:bg-indigo-700 focus:outline-none 
                 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-10"
-          //   onClick={만들어줄것}
+          onClick={buyAuctionComment}
         >
           구매하기
         </button>
