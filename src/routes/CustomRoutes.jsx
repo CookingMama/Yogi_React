@@ -7,6 +7,7 @@ import ViewAuctionCommentDetail from "../components/auctionComment/ViewAuctionCo
 import ViewAuctionCommentList from "../components/auctionComment/ViewAuctionCommentList";
 import Home from "../components/home";
 import Main from "../components/main";
+import MyPage from "../components/mypage";
 import Productsell from "../components/productSell";
 import PostSell from "../components/productSell/PostSell";
 import ViewDetailSell from "../components/productSell/ViewDetailSell";
@@ -35,6 +36,8 @@ const CustomRoutes = () => {
             path="auctionbuy/:auctionId/:commentId"
             element={<ViewAuctionCommentDetail />}
           />
+
+          <Route path="mypage" element={<MyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

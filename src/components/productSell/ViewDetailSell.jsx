@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import {
   getDetailProduct,
-  putDetailProduct,
+  
 } from "../store/productSell/detailProductSellSlice";
-import { getProduct } from "../store/productSell/productSellSlice";
+import { getProduct, putDetailProduct } from "../store/productSell/productSellSlice";
 
 const ViewDetailSell = () => {
   const navigate = useNavigate();
@@ -33,7 +33,11 @@ const ViewDetailSell = () => {
 
   const buyProductSell = () => {
     dispatch(putDetailProduct(param.id));
-    navigate("/productsell");
+    navigate("/productsell", {
+      state: {
+        data,
+      },
+    });
   };
   return (
     <div className="bg-white whitespace-nowrap">

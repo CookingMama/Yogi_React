@@ -1,39 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { api } from "../../api/api";
-import { getProduct, reload } from "../store/productSell/productSellSlice";
+import { getMyProduct } from "../store/myPage/myProductSellSlice";
 
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-
-const ViewSell = () => {
+const ViewMyProductSell = () => {
   const dispatch = useDispatch();
-  const { data, status } = useSelector((state) => state.productSell);
+  const { data, status } = useSelector((state) => state.myProductSell);
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
-    dispatch(getProduct());
+    dispatch(getMyProduct());
   }, []);
 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          판매중인 중고상품
+          내가 판매중인 중고상품
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
@@ -80,4 +63,4 @@ const ViewSell = () => {
   );
 };
 
-export default ViewSell;
+export default ViewMyProductSell;

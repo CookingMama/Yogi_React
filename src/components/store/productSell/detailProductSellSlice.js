@@ -16,12 +16,7 @@ export const getDetailProduct = createAsyncThunk(
   }
 );
 
-export const putDetailProduct = createAsyncThunk(
-  "/productsellput",
-  async (id) => {
-    const response = await api("put", `/productsell/${id}`);
-  }
-);
+
 
 const detailProductSellSlice = createSlice({
   name: "detailProductSell",
@@ -40,17 +35,7 @@ const detailProductSellSlice = createSlice({
         state.error = action.error.message;
         state.status = "failed";
       })
-      .addCase(putDetailProduct.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(putDetailProduct.fulfilled, (state, action) => {
-        state.status = "successed";
-        console.log(action.payload);
-      })
-      .addCase(putDetailProduct.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.status = "failed";
-      });
+      ;
   },
 });
 
