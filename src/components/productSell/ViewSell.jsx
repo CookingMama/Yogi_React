@@ -35,9 +35,9 @@ const ViewSell = () => {
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {console.log(data)}
           {data?.map((product) => (
             <div key={product.id} className="group relative">
+              {console.log(product)}
               <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                 <img
                   src={product.url}
@@ -48,10 +48,12 @@ const ViewSell = () => {
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
-                    <Link to={`/productsell/${product.id}`}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.title}
-                    </Link>
+                    {product.isSold === true || (
+                      <Link to={`/productsell/${product.id}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {product.title}
+                      </Link>
+                    )}
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">
                     {product.category}
@@ -64,11 +66,11 @@ const ViewSell = () => {
                   {product.price}
                 </p>
               </div>
-              {/* 판매완료 시 구매불가 
-              {product.}
-              <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
-                <span className="text-gray-500">판매완료</span>
-              </div> */}
+              {product.isSold === true && (
+                <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+                  <span className="text-gray-500 text-6xl">판매완료</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
