@@ -33,13 +33,13 @@ const ViewDetailAuctionBuy = () => {
             </div>
             <div className="p-1">
               <h1 className="p-1">내용</h1>
-              <div
+              <pre
                 className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
             border-gray-300 px-3 py-20 text-gray-900 placeholder-gray-500 focus:z-10 
             focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               >
                 {data.content}
-              </div>
+              </pre>
             </div>
             <div className="p-1">
               <h1 className="p-1">카테고리</h1>
