@@ -65,9 +65,9 @@ export default function Headers() {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.user);
   // 실행시 getMe로 정보 가져옴
-  useEffect(() => {
-    dispatch(getMe());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getMe());
+  // }, []);
 
   const navigate = useNavigate();
   const location = useLocation();
