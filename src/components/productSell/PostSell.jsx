@@ -136,10 +136,18 @@ const PostSell = () => {
                 id="content"
                 name="content"
                 type="text"
-                required
                 className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
                 border-gray-300 px-3 py-20 text-gray-900 placeholder-gray-500 focus:z-10 
                 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                placeholder="진짜 아끼던 상품이에요! 생활기스 조금 있어요.."
+                onChange={onChangeHandler}
+              />
+              <textarea
+                id="content"
+                name="content"
+                required
+                className="resize-none border border-gray-300 w-full h-40 rounded-md placeholder:text-center 
+                placeholder:font-medium placeholder:text-sm p-2"
                 placeholder="진짜 아끼던 상품이에요! 생활기스 조금 있어요.."
                 onChange={onChangeHandler}
               />
