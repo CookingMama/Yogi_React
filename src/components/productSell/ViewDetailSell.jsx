@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { getDetailProduct } from "../store/productSell/detailProductSellSlice";
 import {
-  getDetailProduct,
-  
-} from "../store/productSell/detailProductSellSlice";
-import { getProduct, putDetailProduct } from "../store/productSell/productSellSlice";
+  getProduct,
+  putDetailProduct,
+} from "../store/productSell/productSellSlice";
 
 const ViewDetailSell = () => {
   const navigate = useNavigate();
@@ -65,6 +65,9 @@ const ViewDetailSell = () => {
                 </div>
                 <p className="text-sm font-medium text-gray-900">
                   {data.price}
+                </p>
+                <p className="text-sm font-medium text-gray-900">
+                  {data.content}
                 </p>
               </div>
             </div>
