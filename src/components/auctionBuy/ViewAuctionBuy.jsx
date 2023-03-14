@@ -9,6 +9,14 @@ const ViewAuctionBuy = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.auctionBuy);
 
+  var auctionStatus = {
+    PROCEEDING: <p className="text-sm font-medium text-gray-900">진행중</p>,
+    FINISHED: <p className="text-sm font-medium text-gray-900">경매 종료</p>,
+    DEAL_SUCCESS: (
+      <p className="text-sm font-medium text-gray-900">거래 완료</p>
+    ),
+  };
+
   useEffect(() => {
     dispatch(getAuction());
   }, []);
@@ -29,12 +37,20 @@ const ViewAuctionBuy = () => {
               <div className="mt-2 flex justify-between m-2">
                 <div>
                   {console.log(Auction)}
-                  <h3 className="text-sm text-gray-700">
-                    <Link to={`/auctionbuy/${Auction.id}`}>
+                  {Auction.auctionStatus == "PROCEEDING" ? (
+                    <h3 className="text-sm text-gray-700">
+                      <Link to={`/auctionbuy/${Auction.id}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {Auction.buyerNickName}님
+                      </Link>
+                    </h3>
+                  ) : (
+                    <h3 className="text-sm text-gray-700">
                       <span aria-hidden="true" className="absolute inset-0" />
                       {Auction.buyerNickName}님
-                    </Link>
-                  </h3>
+                    </h3>
+                  )}
+
                   <p className="mt-1 text-sm text-gray-500">
                     {Auction.category}
                   </p>
@@ -58,6 +74,7 @@ const ViewAuctionBuy = () => {
                     {Auction.timeout.slice(11, 13)}시
                     {Auction.timeout.slice(14, 16)}분까지
                   </p>
+                  <div>{auctionStatus[Auction.auctionStatus]}</div>
                 </div>
               </div>
             </div>
