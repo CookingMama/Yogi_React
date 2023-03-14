@@ -8,7 +8,8 @@ import { getProduct } from "../store/productSell/productSellSlice";
 
 const ViewDetailAuctionBuy = () => {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.detailAuctionBuy); //만들어야함
+  const { data } = useSelector((state) => state.detailAuctionBuy);
+  const myData = useSelector((state) => state.user.data);
   //   const location = useLocation();
   const param = useParams();
   useEffect(() => {
@@ -106,7 +107,9 @@ const ViewDetailAuctionBuy = () => {
           </button>
         </Link>
       </div>
-      <ViewAuctionCommentList />
+      <div>
+        {data.buyerNickName == myData.nickName && <ViewAuctionCommentList />}{" "}
+      </div>
     </div>
   );
 };
