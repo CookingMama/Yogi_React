@@ -7,6 +7,7 @@ import myAuctionBuySlice from "./myPage/myAuctionBuySlice";
 import myProductSellSlice from "./myPage/myProductSellSlice";
 import detailProductSellSlice from "./productSell/detailProductSellSlice";
 import productSellSlice from "./productSell/productSellSlice";
+import searchSlice from "./search/searchSlice";
 import userSlice from "./user/userSlice";
 
 export default configureStore({
@@ -20,5 +21,6 @@ export default configureStore({
     detailAuctionComment: detailAuctionCommentSlice,
     myProductSell: myProductSellSlice,
     myAuctionBuy: myAuctionBuySlice,
+    search: searchSlice,
   },
 });

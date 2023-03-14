@@ -16,10 +16,10 @@ export const login = createAsyncThunk("user/login", async (user) => {
   return response.data;
 });
 
-export const getMe = createAsyncThunk("user/me", async () => {
-  const response = await api("get", "/user/me");
-  return response.data;
-});
+// export const getMe = createAsyncThunk("user/me", async () => {
+//   const response = await api("get", "/user/me");
+//   return response.data;
+// });
 
 const userSlice = createSlice({
   name: "user",
@@ -45,18 +45,18 @@ const userSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.error = action.error.message;
         state.status = "failed";
-      })
-      .addCase(getMe.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(getMe.fulfilled, (state, action) => {
-        state.status = "successed";
-        state.data = action.payload;
-      })
-      .addCase(getMe.rejected, (state, action) => {
-        state.error = action.error.message;
-        state.status = "failed";
       });
+    // .addCase(getMe.pending, (state, action) => {
+    //   state.status = "loading";
+    // })
+    // .addCase(getMe.fulfilled, (state, action) => {
+    //   state.status = "successed";
+    //   state.data = action.payload;
+    // })
+    // .addCase(getMe.rejected, (state, action) => {
+    //   state.error = action.error.message;
+    //   state.status = "failed";
+    // });
   },
 });
 
