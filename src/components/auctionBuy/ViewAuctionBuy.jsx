@@ -36,16 +36,15 @@ const ViewAuctionBuy = () => {
             >
               <div className="mt-2 flex justify-between m-2">
                 <div>
-                  {console.log(Auction)}
                   {Auction.auctionStatus == "PROCEEDING" ? (
-                    <h3 className="text-sm text-gray-700">
+                    <h3 className="text-sm text-gray-700 mt-2">
                       <Link to={`/auctionbuy/${Auction.id}`}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {Auction.buyerNickName}님
                       </Link>
                     </h3>
                   ) : (
-                    <h3 className="text-sm text-gray-700">
+                    <h3 className="text-sm text-gray-700 mt-2">
                       <span aria-hidden="true" className="absolute inset-0" />
                       {Auction.buyerNickName}님
                     </h3>
@@ -59,12 +58,12 @@ const ViewAuctionBuy = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-gray-900 mt-5">
+                  <p className="text-base font-semibold text-gray-900 mt-6">
                     {Auction.title}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900 mt-4">
+                  <p className="text-sm font-medium text-gray-900">
                     {Auction.highWishPrice}원
                   </p>
                   <p className="text-sm font-medium text-gray-900">
@@ -75,6 +74,9 @@ const ViewAuctionBuy = () => {
                     {Auction.timeout.slice(14, 16)}분까지
                   </p>
                   <div>{auctionStatus[Auction.auctionStatus]}</div>
+                  <p className="text-sm font-medium text-gray-900">
+                    {Auction.commentCount}개의 Comment
+                  </p>
                 </div>
               </div>
             </div>

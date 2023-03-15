@@ -2,15 +2,14 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { api } from "../../api/api";
-import { getSearch } from "../store/search/searchSlice";
+import { getSearch, searchReset } from "../store/search/searchSlice";
 
 const Home = () => {
   const { data } = useSelector((state) => state.user);
   const searchData = useSelector((state) => state.search.data);
   const dispatch = useDispatch();
-  console.log(searchData);
   const [keyword, setKeyword] = useState({
-    title: null,
+    title: "",
   });
 
   const onChangeHandler = (e) => {
@@ -20,8 +19,11 @@ const Home = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (keyword) {
+    if (keyword.title != "") {
       dispatch(getSearch(keyword));
+      setKeyword({ title: "" });
+    } else {
+      dispatch(searchReset());
     }
   };
 
@@ -53,7 +55,7 @@ const Home = () => {
           className="border mt-5 w-1/2"
           type="text"
           name="title"
-          value={keyword.keyword}
+          value={keyword.title}
           onChange={onChangeHandler}
         />
         <button className="border">검색</button>

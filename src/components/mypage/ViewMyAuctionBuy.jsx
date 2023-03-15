@@ -7,6 +7,14 @@ const ViewMyAuctionBuy = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.myAuctionBuy);
 
+  var auctionStatus = {
+    PROCEEDING: <p className="text-sm font-medium text-gray-900">진행중</p>,
+    FINISHED: <p className="text-sm font-medium text-gray-900">경매 종료</p>,
+    DEAL_SUCCESS: (
+      <p className="text-sm font-medium text-gray-900">거래 완료</p>
+    ),
+  };
+
   useEffect(() => {
     dispatch(getMyAuction());
   }, []);
@@ -17,7 +25,7 @@ const ViewMyAuctionBuy = () => {
           나의 진행중인 역경매
         </h2>
 
-        <div className="mt-6 xl:gap-x-8 ml-16">
+        <div className="mt-6 xl:gap-x-8">
           {data?.map((Auction) => (
             <div
               key={Auction.id}
@@ -25,13 +33,20 @@ const ViewMyAuctionBuy = () => {
             >
               <div className="mt-2 flex justify-between m-2">
                 <div>
-                  {console.log(Auction)}
-                  <h3 className="text-sm text-gray-700">
-                    <Link to={`/auctionbuy/${Auction.id}`}>
+                  {Auction.auctionStatus == "PROCEEDING" ? (
+                    <h3 className="text-sm text-gray-700 mt-2">
+                      <Link to={`/auctionbuy/${Auction.id}`}>
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {Auction.buyerNickName}님
+                      </Link>
+                    </h3>
+                  ) : (
+                    <h3 className="text-sm text-gray-700 mt-2">
                       <span aria-hidden="true" className="absolute inset-0" />
                       {Auction.buyerNickName}님
-                    </Link>
-                  </h3>
+                    </h3>
+                  )}
+
                   <p className="mt-1 text-sm text-gray-500">
                     {Auction.category}
                   </p>
@@ -40,12 +55,12 @@ const ViewMyAuctionBuy = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-gray-900 mt-5">
+                  <p className="text-base font-semibold text-gray-900 mt-6">
                     {Auction.title}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900 mt-4">
+                  <p className="text-sm font-medium text-gray-900">
                     {Auction.highWishPrice}원
                   </p>
                   <p className="text-sm font-medium text-gray-900">
@@ -54,6 +69,10 @@ const ViewMyAuctionBuy = () => {
                     {Auction.timeout.slice(8, 10)}일{" "}
                     {Auction.timeout.slice(11, 13)}시
                     {Auction.timeout.slice(14, 16)}분까지
+                  </p>
+                  <div>{auctionStatus[Auction.auctionStatus]}</div>
+                  <p className="text-sm font-medium text-gray-900">
+                    {Auction.commentCount}개의 Comment
                   </p>
                 </div>
               </div>

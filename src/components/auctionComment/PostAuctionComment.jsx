@@ -40,7 +40,6 @@ const PostAuctionComment = () => {
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value);
     setAuctionComment({ ...auctionComment, [name]: value });
   };
   return (
@@ -57,7 +56,7 @@ const PostAuctionComment = () => {
                 required
                 className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
                 border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 
-                focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                focus:border-red-400 focus:outline-none focus:ring-red-400 sm:text-sm"
                 placeholder="OOO 싸게 팝니다! 얼마 안 썼어요~~!"
                 onChange={onChangeHandler}
               />
@@ -70,7 +69,7 @@ const PostAuctionComment = () => {
                   id="biddingPrice"
                   name="biddingPrice"
                   className="py-2 px-3 pl-9 pr-16 block w-full border border-gray-300 rounded-md text-sm focus:z-10 
-                  focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  focus:border-red-400 focus:outline-none focus:ring-red-400 sm:text-sm"
                   placeholder="1,000"
                   onChange={onChangeHandler}
                 />
@@ -89,7 +88,7 @@ const PostAuctionComment = () => {
                 name="pCondition"
                 className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
                 border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 
-                focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                focus:border-red-400 focus:outline-none focus:ring-red-400 sm:text-sm"
                 onChange={onChangeHandler}
               >
                 <option>-- 눌러서 선택해주세요! --</option>
@@ -109,10 +108,10 @@ const PostAuctionComment = () => {
                 required
                 className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
                 border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 
-                focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
+                focus:border-red-400 focus:outline-none focus:ring-red-400 sm:text-sm
                 file:mr-4 file:py-2 file:px-4 file:rounded-full 
-                file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700
-                hover:file:bg-blue-100"
+                file:border-0 file:text-sm file:font-semibold file:bg-red-300 file:text-black
+                hover:file:bg-red-200"
                 onChange={setFileName}
               />
             </div>
@@ -123,7 +122,8 @@ const PostAuctionComment = () => {
                 name="content"
                 required
                 className="resize-none border border-gray-300 w-full h-40 rounded-md placeholder:text-center 
-                placeholder:font-medium placeholder:text-sm p-2"
+                placeholder:font-medium placeholder:text-sm p-2
+                focus:border-red-400 focus:outline-none focus:ring-red-400 sm:text-sm"
                 placeholder="진짜 아끼던 상품이에요! 생활기스 조금 있어요.."
                 onChange={onChangeHandler}
               />
@@ -132,8 +132,8 @@ const PostAuctionComment = () => {
               <button
                 type="submit"
                 className="group relative flex w-1/2 justify-center rounded-md border border-transparent 
-                bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none 
-                focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-5"
+                bg-slate-900 py-2 px-4 text-sm font-medium text-red-400 hover:bg-red-400 hover:text-black 
+                focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 mt-5"
               >
                 등록
               </button>

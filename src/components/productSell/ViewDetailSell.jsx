@@ -20,7 +20,6 @@ const ViewDetailSell = () => {
   });
   //   const location = useLocation();
   const param = useParams();
-  console.log(param);
   useEffect(() => {
     dispatch(getDetailProduct(param.id));
   }, []);
@@ -66,9 +65,17 @@ const ViewDetailSell = () => {
                 <p className="text-sm font-medium text-gray-900">
                   {data.price}
                 </p>
-                <p className="text-sm font-medium text-gray-900">
+              </div>
+              <div className="p-1">
+                <h1 className="p-1">내용</h1>
+                <pre
+                  className="relative block w-full appearance-none rounded-none rounded-t-md rounded-b-md border 
+            border-gray-300 px-3 py-20 text-gray-900 placeholder-gray-500 focus:z-10 
+            focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
+            whitespace-pre-wrap break-all overflow-auto"
+                >
                   {data.content}
-                </p>
+                </pre>
               </div>
             </div>
           )}
