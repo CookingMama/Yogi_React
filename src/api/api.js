@@ -18,7 +18,6 @@ export const api = async (method, url, data) => {
 
 export const apiFile = async (method, url, data) => {
   const formData = new FormData();
-  console.log(data.file);
   formData.append("title", data.title);
   formData.append("category", data.category);
   formData.append("price", data.price);
@@ -44,7 +43,6 @@ export const apiFile = async (method, url, data) => {
 
 export const apiFileComment = async (method, url, data) => {
   const formData = new FormData();
-  console.log(data.file);
   formData.append("title", data.title);
   formData.append("biddingPrice", data.biddingPrice);
   formData.append("pCondition", data.pCondition);

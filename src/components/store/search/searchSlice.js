@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export const getSearch = createAsyncThunk("/search", async (keyword) => {
-  console.log(keyword);
   const response = await api("post", "/productsell/search", keyword);
   return response.data;
 });
@@ -17,7 +16,11 @@ export const getSearch = createAsyncThunk("/search", async (keyword) => {
 const searchSlice = createSlice({
   name: "search",
   initialState,
-  reducers: {},
+  reducers: {
+    searchReset: (state) => {
+      state.data = initialState.data;
+    },
+  },
   extraReducers(bulider) {
     bulider
       .addCase(getSearch.pending, (state, action) => {
@@ -30,8 +33,11 @@ const searchSlice = createSlice({
       .addCase(getSearch.rejected, (state, action) => {
         state.error = action.error.message;
         state.status = "failed";
+        state.data = initialState.data;
       });
   },
 });
+
+export const { searchReset } = searchSlice.actions;
 
 export default searchSlice.reducer;

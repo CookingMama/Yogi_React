@@ -23,7 +23,6 @@ const ViewSell = () => {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.productSell);
   const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     dispatch(getProduct());

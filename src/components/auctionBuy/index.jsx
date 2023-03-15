@@ -12,8 +12,8 @@ const AuctionBuy = () => {
         >
           <button
             className="group relative flex w-1/5 justify-center rounded-md border border-transparent 
-              bg-slate-900 py-2 px-4 text-sm font-semibold text-red-400 hover:bg-indigo-700 focus:outline-none 
-                focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mb-10"
+            bg-slate-900 py-2 px-4 text-sm font-semibold text-red-400 hover:bg-red-400 hover:text-black focus:outline-none 
+            focus:ring-2 focus:ring-red-500 focus:ring-offset-2 mb-10"
           >
             경매등록
           </button>

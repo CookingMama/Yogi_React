@@ -56,7 +56,10 @@ const ViewAuctionCommentDetail = () => {
                   내용
                 </h2>
                 <div className="overflow-hidden rounded-md bg-gray-200">
-                  <pre className="mt-1 text-sm text-black p-2">
+                  <pre
+                    className="mt-1 text-sm text-black p-2 
+                  whitespace-pre-wrap break-all overflow-auto"
+                  >
                     {data.content}
                   </pre>
                 </div>
